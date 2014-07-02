@@ -1,10 +1,21 @@
 # avatar-generator [![Build Status](https://secure.travis-ci.org/arusanov/avatar-generator.png?branch=master)](http://travis-ci.org/arusanov/avatar-generator)
 
-8bit avatar generator. 
+8bit avatar generator like one below. 
+
+![Like this one](http://eightbitavatar.herokuapp.com/?id=@arusanov&s=male&size=150)
+
 Inspired by https://github.com/matveyco/8biticon (icons also theirs).
 Generate same icons for same ids like gravatar, 
 Use email or md5 or any string for generating and get the same avatar.
 
+## Demo
+
+http://eightbitavatar.herokuapp.com/?id=userid&s=male&size=400
+
+Where:
+id - your user id
+s - sex (male|female)
+size - avatar size
 
 ## Getting Started
 
