@@ -1,0 +1,49 @@
+{
+  "name": "avatar-generator",
+  "version": "1.0.0",
+  "main": "lib/avatar-generator.js",
+  "description": "8bit avatar generator. Inspired by https://github.com/matveyco/8biticon",
+  "homepage": "https://github.com/arusanov/avatar-generator",
+  "bugs": "https://github.com/arusanov/avatar-generator/issues",
+  "author": {
+    "name": "Alex R"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arusanov/avatar-generator"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "avatar",
+    "8bit",
+    "old school"
+  ],
+  "devDependencies": {
+    "buffer-equal": "0.0.1",
+    "connect": "^2.21.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "^0.2.0",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1"
+  },
+  "dependencies": {
+    "commander": "^2.2.0",
+    "seed-random": "^2.2.0",
+    "through": "^2.3.4"
+  },
+  "engines": {
+    "node": ">=0.6"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "bin": {
+    "avatar-generator": "cli.js"
+  },
+  "preferGlobal": "false"
+}
