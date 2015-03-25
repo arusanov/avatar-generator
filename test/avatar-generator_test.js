@@ -1,6 +1,6 @@
 'use strict';
 
-var avatar = require('../lib/avatar-generator.js'),
+var avatar = require('../lib/avatar-generator.js')(),
     os = require('os'),
     fs = require('fs'),
     path = require('path');
@@ -24,17 +24,22 @@ exports.avatarGenerator = {
     },
     'generate file': function (test) {
         var fname = path.join(os.tmpdir(), new Date().getTime()+'.png');
-        avatar.generate('@user', 'male', 400).write(fname, function (err) {
+        avatar('@user', 'male', 400).write(fname, function (err) {
             test.ifError(err);
             test.ok(fs.existsSync(fname), 'file should exists');
             testFiles.push(fname);
             test.done();
         });
     },
+    'has a discriminators': function (test) {
+        test.ok(avatar.discriminators!=null);
+        test.ok(avatar.discriminators.length === 2);
+        test.done();
+    },
     'make a stream': function (test) {
         var fname = path.join(os.tmpdir(), new Date().getTime()+'.png'),
             fstream = fs.createWriteStream(fname);
-        var imageStream = avatar.generate('@user', 'male', 400).stream();
+        var imageStream = avatar('@user', 'male', 400).stream();
         imageStream.on('error',function (err){
            test.ifError(err);
            test.done();
@@ -47,7 +52,7 @@ exports.avatarGenerator = {
         imageStream.pipe(fstream);
     },
     'make a buffer': function (test) {
-        avatar.generate('@user', 'male', 400).toBuffer(function (err,buffer){
+        avatar('@user', 'male', 400).toBuffer(function (err,buffer){
             test.ifError(err);
             test.ok(buffer && buffer.length>0 , 'buffer is empty');
             test.done();
@@ -55,10 +60,10 @@ exports.avatarGenerator = {
     },
     'buffers with same key equals': function (test) {
         var buffer1;
-        avatar.generate('@user', 'male', 400).toBuffer(function (err,buffer){
+        avatar('@user', 'male', 400).toBuffer(function (err,buffer){
             test.ifError(err);
             buffer1 = buffer;
-            avatar.generate('@user', 'male', 400).toBuffer(function (err,buffer){
+            avatar('@user', 'male', 400).toBuffer(function (err,buffer){
                 test.ifError(err);
                 test.ok(require('buffer-equal')(buffer1,buffer), 'buffer not equals');
                 test.done();
@@ -67,10 +72,10 @@ exports.avatarGenerator = {
     },
     'buffers with different key not equals': function (test) {
         var buffer1;
-        avatar.generate('@user1', 'male', 400).toBuffer(function (err,buffer){
+        avatar('@user1', 'male', 400).toBuffer(function (err,buffer){
             test.ifError(err);
             buffer1 = buffer;
-            avatar.generate('@user2', 'male', 400).toBuffer(function (err,buffer){
+            avatar('@user2', 'male', 400).toBuffer(function (err,buffer){
                 test.ifError(err);
                 test.ok(!require('buffer-equal')(buffer1,buffer), 'buffer equals');
                 test.done();

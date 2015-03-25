@@ -1,6 +1,6 @@
 'use strict';
 
-var avatar = require('../lib/avatar-generator.js'),
+var avatar = require('../lib/avatar-generator.js')(),
     connect = require('connect'),
     fs = require('fs'),
     path = require('path'),
@@ -34,7 +34,7 @@ var app = connect()
                             fs.createReadStream(fpath).pipe(res);
                         } else {
                             //Generate new one
-                            var image =avatar.generate(query.id, query.s, size).stream();
+                            var image =avatar(query.id, query.s, size).stream();
                             image.pipe(fs.createWriteStream(fpath));
                             image.pipe(res);
                         }

@@ -22,8 +22,13 @@ size - avatar size
 Install the module with: `npm install avatar-generator`
 
 ```js
-var avatar-generator = require('avatar-generator');
-avatar.generate('User ID (email or hash or any string)', 'male|female', 400).stream().pipe(stream);
+var avatar = require('./lib/avatar-generator')({
+    //Optional settings. Default settings in 'settings.js'
+    order:'background face clothes head hair eye mouth'.split(' '), //order in which sprites should be combined
+    images:require('path').join(__dirname,'./img'), // path to sprites
+    convert:'convert' //Path to imagemagick convert
+});
+avatar('User ID (email or hash or any string)', 'male|female', 400).stream().pipe(stream);
 ```
 
 Install with cli command
@@ -33,24 +38,6 @@ $ npm install -g avatar-generator
 $ avatar-generator --help
 $ avatar-generator --version
 ```
-
-
-## Documentation
-
-Project uses **imagemagick** so make sure it's installed and available in $PATH.
-You can customize path to imagemagick **convert** command using `settings.js`
- 
-```js
-module.exports = {
-  order:'background face clothes head hair eye mouth'.split(' '), //order in which sprites should be combined
-  images:require('path').join(__dirname,'./img'), // path to sprites 
-  convert:'convert' //Path to imagemagick convert 
-};
-```
-
-Generator uses avatars layers in `img` 
-You can easily add your own if you want.
-
 
 
 ## Examples

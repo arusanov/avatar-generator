@@ -2,7 +2,7 @@
 
 'use strict';
 
-var generator = require('./lib/avatar-generator');
+var avatar = require('./lib/avatar-generator')();
 var program = require('commander');
 
 function checkDiscriminator(value) {
@@ -22,7 +22,7 @@ try {
     if (program['*'] && Array.isArray(program['*']) && program['*'].length>0){
         out = require('fs').createWriteStream(program['*'][0]);
     }
-    generator.generate(program.id, program.discriminator, program.size).stream().pipe(out);
+    generator(program.id, program.discriminator, program.size).stream().pipe(out);
 
 }
 catch (err) {
