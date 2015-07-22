@@ -30,27 +30,33 @@ var avatar = require('./lib/avatar-generator')({
     images:require('path').join(__dirname,'./img'), // path to sprites
     convert:'convert' //Path to imagemagick convert
 });
-avatar('User ID (email or hash or any string)', 'male|female', 400).stream().pipe(stream);
+avatar('User ID (email or hash or any string)', 'male|female', 400)
+    .stream()
+    .pipe(stream);
 ```
 
 #### Image file
 
 ```
-avatar('User ID (email or hash or any string)', 'male|female', imageWidth).write(filename, function (err) {});
+avatar('User ID', 'male|female', imageWidth)
+    .write(filename, function (err) {});
 ```
 
 #### Image buffer
 
 ```
-avatar('User ID (email or hash or any string)', 'male|female', imageWidth).toBuffer(function (err,buffer){
+avatar('User ID', 'male|female', imageWidth)
+    .toBuffer(function (err,buffer){
     //Do something with buffer. eg buffer.toString('base64');
-});
+    });
 ```
 
 #### Image stream
 
 ```
-avatar('User ID (email or hash or any string)', 'male|female', imageWidth).stream().pipe(anotherStream);
+avatar('User ID', 'male|female', imageWidth)
+    .stream()
+    .pipe(anotherStream);
 ```
 
 
