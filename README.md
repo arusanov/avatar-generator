@@ -17,6 +17,8 @@ id - your user id
 s - sex (male|female)
 size - avatar size
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Getting Started
 
 Install the module with: `npm install avatar-generator`
@@ -31,6 +33,27 @@ var avatar = require('./lib/avatar-generator')({
 avatar('User ID (email or hash or any string)', 'male|female', 400).stream().pipe(stream);
 ```
 
+#### Image file
+
+```
+avatar('User ID (email or hash or any string)', 'male|female', imageWidth).write(filename, function (err) {});
+```
+
+#### Image buffer
+
+```
+avatar('User ID (email or hash or any string)', 'male|female', imageWidth).toBuffer(function (err,buffer){
+    //Do something with buffer. eg buffer.toString('base64');
+});
+```
+
+#### Image stream
+
+```
+avatar('User ID (email or hash or any string)', 'male|female', imageWidth).stream().pipe(anotherStream);
+```
+
+
 Install with cli command
 
 ```sh
@@ -42,7 +65,7 @@ $ avatar-generator --version
 
 ## Examples
 
-see `example/file_example.js` and `example/webserver-exapmle.js`
+See `example/*.js`
 
 
 ## Contributing
