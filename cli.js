@@ -2,7 +2,7 @@
 
 'use strict';
 
-var avatar = require('./lib/avatar-generator')();
+var generator = require('./lib/avatar-generator')();
 var program = require('commander');
 
 function checkDiscriminator(value) {
