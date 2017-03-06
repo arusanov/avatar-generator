@@ -1,6 +1,6 @@
 {
   "name": "avatar-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "lib/avatar-generator.js",
   "description": "8bit avatar generator. Inspired by https://github.com/matveyco/8biticon",
   "homepage": "https://github.com/arusanov/avatar-generator",
