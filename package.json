@@ -25,7 +25,6 @@
     "old school"
   ],
   "devDependencies": {
-    "connect": "^2.21.1",
     "buffer-equal": "0.0.1",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.3.3",
@@ -35,6 +34,7 @@
     "time-grunt": "^0.3.1"
   },
   "dependencies": {
+    "connect": "^2.21.1",
     "commander": "^2.2.0",
     "seed-random": "^2.2.0",
     "through": "^2.3.4",
