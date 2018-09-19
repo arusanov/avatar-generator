@@ -1,7 +1,0 @@
-{
-  "name": "avatar-generator",
-  "description": "8bit avatar generator",
-  "repository": "https://github.com/arusanov/avatar-generator",
-  "logo": "https://camo.githubusercontent.com/d16245fce7e828790435bb60c6d151b33eadc863/687474703a2f2f65696768746269746176617461722e6865726f6b756170702e636f6d2f3f69643d4061727573616e6f7626733d6d616c652673697a653d313530",
-  "keywords": ["node", "avatar"]
-}

@@ -1,12 +1,12 @@
 {
   "name": "avatar-generator",
-  "version": "1.0.8",
-  "main": "lib/avatar-generator.js",
+  "version": "0.0.0-development",
+  "main": "lib/index.js",
   "description": "8bit avatar generator. Inspired by https://github.com/matveyco/8biticon",
   "homepage": "https://github.com/arusanov/avatar-generator",
   "bugs": "https://github.com/arusanov/avatar-generator/issues",
   "author": {
-    "name": "Alex R"
+    "name": "arusanov"
   },
   "repository": {
     "type": "git",
@@ -14,40 +14,66 @@
   },
   "license": "MIT",
   "files": [
-    "lib",
-    "img",
-    "cli.js",
-    "settings.js"
+    "./src",
+    "./lib",
+    "./cli.js"
   ],
+  "typings": "./lib/index.d.ts",
   "keywords": [
     "avatar",
     "8bit",
     "old school"
   ],
   "devDependencies": {
-    "buffer-equal": "0.0.1",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.3.3",
-    "grunt-contrib-watch": "^0.6.1",
-    "jshint-stylish": "^0.2.0",
-    "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.3.1"
+    "@types/chai": "^4.1.5",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.10.1",
+    "@types/seedrandom": "^2.4.27",
+    "@types/sharp": "^0.17.10",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "mocha": "^5.2.0",
+    "prettier": "^1.14.3",
+    "semantic-release": "^15.9.15",
+    "travis-deploy-once": "^5.0.7",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   },
   "dependencies": {
-    "connect": "^2.21.1",
-    "commander": "^2.2.0",
-    "seed-random": "^2.2.0",
-    "through": "^2.3.4",
-    "underscore": "^1.8.2"
+    "commander": "^2.18.0",
+    "seedrandom": "^2.4.4",
+    "sharp": "^0.20.8"
   },
   "engines": {
-    "node": ">=0.10"
-  },
-  "scripts": {
-    "test": "grunt"
+    "node": ">=6.0",
+    "npm": ">=6.0"
   },
   "bin": {
     "avatar-generator": "./cli.js"
   },
-  "preferGlobal": false
+  "scripts": {
+    "commit": "npx git-cz",
+    "build": "tsc",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "precommit": "npm run build",
+    "prepush": "npm test",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
+  },
+  "lint-staged": {
+    "src/*.ts": [
+      "prettier --single-quote --no-semi --trailing-comma es5 --write",
+      "git add"
+    ]
+  },
+  "preferGlobal": false,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
