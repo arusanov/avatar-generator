@@ -62,7 +62,7 @@
     "precommit": "npm run build",
     "prepush": "npm test",
     "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "semantic-release": "npm run build && semantic-release"
   },
   "lint-staged": {
     "src/*.ts": [
