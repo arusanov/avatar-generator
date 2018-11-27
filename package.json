@@ -13,11 +13,6 @@
     "url": "https://github.com/arusanov/avatar-generator"
   },
   "license": "MIT",
-  "files": [
-    "./src",
-    "./lib",
-    "./cli.js"
-  ],
   "typings": "./lib/index.d.ts",
   "keywords": [
     "avatar",

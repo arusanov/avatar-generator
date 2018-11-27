@@ -1,0 +1,6 @@
+.vscode/
+.travis.yml
+.DS_Store
+**/*.spec.*
+test/
+tsconfig.json
