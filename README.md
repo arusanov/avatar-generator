@@ -54,5 +54,5 @@ $ avatar-generator --version
 
 ## License
 
-Copyright (c) 2018 arusanov  
+Copyright (c) 2019 arusanov  
 Licensed under the MIT license.
