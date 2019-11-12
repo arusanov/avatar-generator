@@ -8,7 +8,7 @@
 
 import path from 'path'
 import fs from 'fs'
-import sharp, { SharpInstance } from 'sharp'
+import sharp, { Sharp } from 'sharp'
 import seedrandom from 'seedrandom'
 export type AvatarPart =
   | 'background'
@@ -109,7 +109,7 @@ class AvatarGenerator {
       .filter(Boolean)
   }
 
-  public async generate(id: string, variant: string): Promise<SharpInstance> {
+  public async generate(id: string, variant: string): Promise<Sharp> {
     const parts = this.getParts(id, variant)
     if (!parts.length) {
       throw new Error(`variant '${variant}'does not contain any parts`)
@@ -131,16 +131,28 @@ class AvatarGenerator {
 
     let composite = overlays.shift()!
     for (const overlay of overlays) {
-      const [compoisteData, overlayData] = await Promise.all([
+      const [compositeData, overlayData] = await Promise.all([
         composite,
         overlay
       ])
-      composite = sharp(compoisteData, options)
-        .overlayWith(overlayData, options)
+      composite = sharp(compositeData, {raw: {
+          width: width!,
+          height: height!,
+          channels: 4
+        }})
+          .composite([{ input: overlayData, raw: {
+              width: width!,
+              height: height!,
+              channels: 4
+            } }])
         .raw()
         .toBuffer()
     }
-    return sharp(await composite, options)
+    return sharp(await composite, {raw: {
+        width: width!,
+        height: height!,
+        channels: 4
+      }})
   }
 }
 
